@@ -59,7 +59,7 @@ const SearchEmpty = ({ logined, setLogined }) => {
                   }
                 }}
               />
-              <div>"" 검색 결과입니다.</div>
+              <div>검색 결과입니다.</div>
             </div>
             <div>
               <button
@@ -169,7 +169,7 @@ const SearchEmpty = ({ logined, setLogined }) => {
                   }
                 }}
               />
-              <div>"" 검색 결과입니다.</div>
+              <div>검색 결과입니다.</div>
             </div>
             <div>
               <button
@@ -278,7 +278,7 @@ const SearchEmpty = ({ logined, setLogined }) => {
                   }
                 }}
               />
-              <div>"" 검색 결과입니다.</div>
+              <div>검색 결과입니다.</div>
             </div>
             <div>
               <button
@@ -392,7 +392,7 @@ const SearchEmpty = ({ logined, setLogined }) => {
                   }
                 }}
               />
-              <div>"" 검색 결과입니다.</div>
+              <div>검색 결과입니다.</div>
             </div>
             <div>
               <button

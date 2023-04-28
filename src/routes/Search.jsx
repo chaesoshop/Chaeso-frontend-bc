@@ -303,7 +303,7 @@ const Search = ({ logined, setLogined }) => {
                 }}
                 autoFocus
               />
-              <div>"{search2}" 중고거래 검색 결과입니다.</div>
+              <div>"{search2}" 검색 결과입니다.</div>
             </div>
             <div>
               <button
@@ -482,7 +482,7 @@ const Search = ({ logined, setLogined }) => {
                   }
                 }}
               />
-              <div>"{search2}" 알바 검색 결과입니다.</div>
+              <div>"{search2}" 검색 결과입니다.</div>
             </div>
             <div>
               <button
@@ -704,7 +704,7 @@ const Search = ({ logined, setLogined }) => {
                   }
                 }}
               />
-              <div>"{search2}" 부동산 검색 결과입니다.</div>
+              <div>"{search2}" 검색 결과입니다.</div>
             </div>
             <div>
               <button
@@ -1437,7 +1437,7 @@ const Search = ({ logined, setLogined }) => {
                   }
                 }}
               />
-              <div>"{search2}" 게시판 검색 결과입니다.</div>
+              <div>"{search2}" 검색 결과입니다.</div>
             </div>
             <div>
               <button
