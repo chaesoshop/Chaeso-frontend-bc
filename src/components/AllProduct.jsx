@@ -31,7 +31,7 @@ const AllProduct = ({ logined, setLogined }) => {
     const onSubmit = async () => {
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/`,
+          url: `http://${BACKEND_URL}/`,
           method: "GET",
         });
         onProduct(data.data);
@@ -51,7 +51,7 @@ const AllProduct = ({ logined, setLogined }) => {
   const moveProduct = async (id) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/productView/${id}`,
+        url: `http://${BACKEND_URL}/productView/${id}`,
         method: "POST",
       });
     } catch (e) {
@@ -281,7 +281,7 @@ const AllProduct = ({ logined, setLogined }) => {
               textAlign: "center",
             }}
           >
-            <span>당근마켓 앱에서 따뜻한 거래를 직접 경험해보세요!</span>
+            <span>채소마켓 앱에서 따뜻한 거래를 직접 경험해보세요!</span>
           </div>
           <div
             style={{
@@ -293,7 +293,7 @@ const AllProduct = ({ logined, setLogined }) => {
             <a
               href="#"
               style={{
-                backgroundColor: "#faa64f",
+                backgroundColor: "#0B0B61",
                 marginTop: "10px",
                 padding: "10px 30px",
                 fontSize: "1.5rem",
@@ -307,7 +307,7 @@ const AllProduct = ({ logined, setLogined }) => {
             <a
               href="#"
               style={{
-                backgroundColor: "#faa64f",
+                backgroundColor: "#0B0B61",
                 marginTop: "10px",
                 padding: "10px 20px",
                 fontSize: "1.5rem",

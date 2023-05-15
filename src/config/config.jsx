@@ -1,1 +1,1 @@
-export const BACKEND_URL = "qudgns.site";
+export const BACKEND_URL = "api.chaeso.shop";

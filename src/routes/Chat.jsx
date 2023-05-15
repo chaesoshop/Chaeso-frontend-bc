@@ -60,7 +60,7 @@ const Chat = ({ logined, setLogined }) => {
   const [chatDate, setChatDate] = useState("");
   const connect = () => {
     client.current = new StompJs.Client({
-      brokerURL: `ws://${BACKEND_URL}:8083/wss/chat`, // 웹소켓 서버 직접 접속
+      brokerURL: `ws://${BACKEND_URL}/wss/chat`, // 웹소켓 서버 직접 접속
       // https://www.daddyprogrammer.org/post/4077/spring-websocket-chatting/
       // https://sg-choi.tistory.com/294
 
@@ -127,7 +127,7 @@ const Chat = ({ logined, setLogined }) => {
     const yourid = sessionStorage.getItem("yourName");
     try {
       axios({
-        url: `http://${BACKEND_URL}:8083/addChatNotification`,
+        url: `http://${BACKEND_URL}/addChatNotification`,
         method: "POST",
         data: {
           content: chat,
@@ -160,7 +160,7 @@ const Chat = ({ logined, setLogined }) => {
     try {
       //params로 받은 이미 존재하는 or 새로 생성된 채팅방 조회
       const data1 = await axios({
-        url: `http://${BACKEND_URL}:8083/room/` + roomId,
+        url: `http://${BACKEND_URL}/room/` + roomId,
         method: "GET",
       });
       setType(data1.data.type);
@@ -188,7 +188,7 @@ const Chat = ({ logined, setLogined }) => {
       // 있다면 채팅목록 GET
       if (data1.data != "") {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/getMessage`,
+          url: `http://${BACKEND_URL}/getMessage`,
           method: "GET",
           params: { roomId },
         });
@@ -196,7 +196,7 @@ const Chat = ({ logined, setLogined }) => {
         onChatList(data.data);
       }
       const chatUser = await axios({
-        url: `http://${BACKEND_URL}:8083/getUser/${yourName}`,
+        url: `http://${BACKEND_URL}/getUser/${yourName}`,
         method: "GET",
       });
       onUser2(chatUser.data);
@@ -204,7 +204,7 @@ const Chat = ({ logined, setLogined }) => {
       if (data1.data.type == "product") {
         try {
           const data = await axios({
-            url: `http://${BACKEND_URL}:8083/product/${data1.data.articleId}`,
+            url: `http://${BACKEND_URL}/product/${data1.data.articleId}`,
             method: "get",
           });
           setProduct(data.data);
@@ -257,7 +257,7 @@ const Chat = ({ logined, setLogined }) => {
   const onProductReview = async (articleid) => {
     try {
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/productBuyReview`,
+        url: `http://${BACKEND_URL}/productBuyReview`,
         method: "POST",
         data: {
           productId: articleid,
@@ -335,7 +335,7 @@ const Chat = ({ logined, setLogined }) => {
                     icon={faHandshakeSimple}
                     style={{
                       fontSize: "3rem",
-                      color: "#ffa445",
+                      color: "#0B0B61",
                       marginLeft: "45px",
                       display: "block",
                     }}
@@ -371,7 +371,7 @@ const Chat = ({ logined, setLogined }) => {
                       icon={faHandshakeSimple}
                       style={{
                         fontSize: "3rem",
-                        color: "#ffa445",
+                        color: "#0B0B61",
 
                         display: "block",
                       }}
@@ -417,12 +417,12 @@ const Chat = ({ logined, setLogined }) => {
                         ) : (
                           <FaCarrot
                             style={{
-                              color: "#fc9d39",
+                              color: "#0B0B61",
                               fontSize: "10rem",
                               width: "70px",
                               height: "70px",
                               transform: "translate(-5% ,-5%)",
-                              border: "0.1px #fc9d39 solid",
+                              border: "0.1px #0B0B61 solid",
                               borderRadius: "50%",
                             }}
                           />
@@ -462,7 +462,7 @@ const Chat = ({ logined, setLogined }) => {
                               <div
                                 className="flex flex-col items-center "
                                 style={{
-                                  color: "#fc9d39",
+                                  color: "#0B0B61",
                                 }}
                               >
                                 <ImSad2
@@ -492,7 +492,7 @@ const Chat = ({ logined, setLogined }) => {
                               <div
                                 className="flex flex-col items-center "
                                 style={{
-                                  color: "#fc9d39",
+                                  color: "#0B0B61",
                                 }}
                               >
                                 <ImSmile2
@@ -523,7 +523,7 @@ const Chat = ({ logined, setLogined }) => {
                               <div
                                 className="flex flex-col items-center gap-1"
                                 style={{
-                                  color: "#fc9d39",
+                                  color: "#0B0B61",
                                 }}
                               >
                                 <ImHappy2
@@ -549,7 +549,7 @@ const Chat = ({ logined, setLogined }) => {
                         <div
                           className=" flex justify-center m-2"
                           style={{
-                            backgroundColor: "#fc9d39",
+                            backgroundColor: "#0B0B61",
                             color: "white",
                             borderRadius: "5px",
                           }}
@@ -591,7 +591,7 @@ const Chat = ({ logined, setLogined }) => {
                   icon={faHandshakeSimple}
                   style={{
                     fontSize: "3rem",
-                    color: "#ffa445",
+                    color: "#0B0B61",
                     paddingTop: "5px",
                     paddingLeft: "47px",
                     display: "block",
@@ -630,7 +630,7 @@ const Chat = ({ logined, setLogined }) => {
                   icon={faHandshakeSimple}
                   style={{
                     fontSize: "3rem",
-                    color: "#ffa445",
+                    color: "#0B0B61",
 
                     display: "block",
                   }}
@@ -676,12 +676,12 @@ const Chat = ({ logined, setLogined }) => {
                     ) : (
                       <FaCarrot
                         style={{
-                          color: "#fc9d39",
+                          color: "#0B0B61",
                           fontSize: "10rem",
                           width: "70px",
                           height: "70px",
                           transform: "translate(-5% ,-5%)",
-                          border: "0.1px #fc9d39 solid",
+                          border: "0.1px #0B0B61 solid",
                           borderRadius: "50%",
                         }}
                       />
@@ -709,7 +709,7 @@ const Chat = ({ logined, setLogined }) => {
                     <div
                       className=" flex justify-center m-2"
                       style={{
-                        backgroundColor: "#fc9d39",
+                        backgroundColor: "#0B0B61",
                         color: "white",
                         borderRadius: "5px",
                         width: "300px",
@@ -756,7 +756,7 @@ const Chat = ({ logined, setLogined }) => {
             margin: "0 auto",
             height: "80vh",
             position: "relative",
-            border: "1px solid #ffa445",
+            border: "1px solid #0B0B61",
             borderRadius: "20px",
             overflow: "auto",
             paddingBottom: "10px",
@@ -765,7 +765,7 @@ const Chat = ({ logined, setLogined }) => {
           {type == "product" ? (
             <div
               style={{
-                borderBottom: "1px #ffa445 solid",
+                borderBottom: "1px #0B0B61 solid",
                 margin: "0 auto",
                 width: "500px",
                 display: "flex",
@@ -800,7 +800,7 @@ const Chat = ({ logined, setLogined }) => {
                     icon={faCarrot}
                     style={{
                       fontSize: "5rem",
-                      color: "#ffa445",
+                      color: "#0B0B61",
                       paddingLeft: "10px",
                       paddingTop: "5px",
                     }}
@@ -841,7 +841,7 @@ const Chat = ({ logined, setLogined }) => {
                   {chat.sender == sessionStorage.getItem("userid") ? (
                     <div
                       style={{
-                        backgroundColor: "#ffa445",
+                        backgroundColor: "#0B0B61",
                         borderRadius: "20px",
                         width: "45%",
                         minHeight: "50px",
@@ -872,7 +872,7 @@ const Chat = ({ logined, setLogined }) => {
                             icon={faCarrot}
                             style={{
                               fontSize: "2rem",
-                              color: "#ffa445",
+                              color: "#0B0B61",
                               position: "absolute",
 
                               left: "0%",
@@ -942,7 +942,7 @@ const Chat = ({ logined, setLogined }) => {
             placeholder="메시지를 입력해 주세요"
             style={{
               width: "830px",
-              border: "1px #ffa445 solid",
+              border: "1px #0B0B61 solid",
               borderRadius: "10px",
               backgroundColor: "white",
               padding: "10px",
@@ -962,10 +962,10 @@ const Chat = ({ logined, setLogined }) => {
             }}
             style={{
               padding: "5px 10px",
-              border: "1px #ffa445 solid",
+              border: "1px #0B0B61 solid",
               marginLeft: "10px",
               borderRadius: "10%",
-              color: "#ffa445",
+              color: "#0B0B61",
             }}
           >
             전송

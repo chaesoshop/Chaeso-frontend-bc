@@ -113,7 +113,7 @@ const ProductEdit = ({ logined, setLogined }) => {
   ) => {
     try {
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/productEdit/${num}`,
+        url: `http://${BACKEND_URL}/productEdit/${num}`,
         method: "POST",
         data: {
           productCategory: category,
@@ -134,7 +134,7 @@ const ProductEdit = ({ logined, setLogined }) => {
     const getData = async () => {
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/product/${num}`,
+          url: `http://${BACKEND_URL}/product/${num}`,
           method: "GET",
         });
         //console.log(data.data);
@@ -148,7 +148,7 @@ const ProductEdit = ({ logined, setLogined }) => {
       }
       try {
         const data1 = await axios({
-          url: `http://${BACKEND_URL}:8083/getProductWithImage/${num}`,
+          url: `http://${BACKEND_URL}/getProductWithImage/${num}`,
           method: "GET",
         });
         console.log("data1 :", data1.data);
@@ -190,7 +190,7 @@ const ProductEdit = ({ logined, setLogined }) => {
         headers: {
           "Content-Type": `application/json`,
         },
-        url: `http://${BACKEND_URL}:8083/productImageEdit/${num}`,
+        url: `http://${BACKEND_URL}/productImageEdit/${num}`,
         method: "POST",
         data: formData,
       });
@@ -215,7 +215,7 @@ const ProductEdit = ({ logined, setLogined }) => {
       >
         <span
           style={{
-            color: "#ffa445",
+            color: "#0B0B61",
           }}
         >
           중고거래 수정하기
@@ -330,7 +330,7 @@ const ProductEdit = ({ logined, setLogined }) => {
           <div
             className="pt-4"
             style={{
-              color: "#ffa445",
+              color: "#0B0B61",
               fontWeight: "bolder",
             }}
           >
@@ -432,13 +432,13 @@ const ProductEdit = ({ logined, setLogined }) => {
                 }
               }}
               style={{
-                outline: "1px #ffa445 solid",
+                outline: "1px #0B0B61 solid",
                 borderRadius: "10px",
                 padding: "15px",
                 fontWeight: "bolder",
                 color: "white",
                 fontSize: "1.1rem",
-                backgroundColor: "#FFB26B",
+                backgroundColor: "#0B0B61", //배경색
                 margin: "15px auto",
                 width: "750px",
               }}
@@ -455,7 +455,7 @@ const ProductEdit = ({ logined, setLogined }) => {
                 height: "150px",
                 justifyContent: "center",
                 background: "white",
-                outline: "1px #ffa445 solid",
+                outline: "1px #0B0B61 solid",
                 borderRadius: "10px",
                 display: "flex",
               }}
@@ -466,7 +466,7 @@ const ProductEdit = ({ logined, setLogined }) => {
                   textAlign: "center",
                   width: "100%",
                   height: "100%",
-                  color: "#ffa445",
+                  color: "#0B0B61",
                   fontWeight: "bolder",
                   paddingTop: "10px",
                 }}
@@ -478,9 +478,9 @@ const ProductEdit = ({ logined, setLogined }) => {
                 <div
                   style={{
                     padding: "10px",
-                    outline: "1px #ffa445 solid",
+                    outline: "1px #0B0B61 solid",
                     borderRadius: "10px",
-                    color: "#ffa445",
+                    color: "#0B0B61",
                     width: "80px",
                     margin: "30px auto",
                   }}

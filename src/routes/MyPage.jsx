@@ -53,7 +53,7 @@ const MyPage = ({ logined, setLogined }) => {
         headers: {
           "Content-Type": `application/json`,
         },
-        url: `http://${BACKEND_URL}:8083/userProfileImageReset`,
+        url: `http://${BACKEND_URL}/userProfileImageReset`,
         method: "POST",
         data: formData,
       });
@@ -76,7 +76,7 @@ const MyPage = ({ logined, setLogined }) => {
     const onSubmit = async () => {
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/getUser/${sessionStorage.getItem(
+          url: `http://${BACKEND_URL}/getUser/${sessionStorage.getItem(
             "userid"
           )}`,
           method: "GET",
@@ -109,7 +109,7 @@ const MyPage = ({ logined, setLogined }) => {
         headers: {
           "Content-Type": `application/json`,
         },
-        url: `http://${BACKEND_URL}:8083/userProfileImageChange`,
+        url: `http://${BACKEND_URL}/userProfileImageChange`,
         method: "POST",
         data: formData,
       });
@@ -137,7 +137,7 @@ const MyPage = ({ logined, setLogined }) => {
         headers: {
           "Content-Type": `application/json`,
         },
-        url: `http://${BACKEND_URL}:8083/userProfileChange`,
+        url: `http://${BACKEND_URL}/userProfileChange`,
         method: "POST",
         data: formData,
       });
@@ -163,7 +163,7 @@ const MyPage = ({ logined, setLogined }) => {
         headers: {
           "Content-Type": `application/json`,
         },
-        url: `http://${BACKEND_URL}:8083/userProfileImageAndNicknameReset`,
+        url: `http://${BACKEND_URL}/userProfileImageAndNicknameReset`,
         method: "POST",
         data: formData,
       });
@@ -206,7 +206,7 @@ const MyPage = ({ logined, setLogined }) => {
               <a href="/mypage">내 프로필</a>{" "}
             </li>
             <li>
-              <a href="/security">보안설정</a>
+              <a href="/security">보안 설정</a>
             </li>
             <li>
               <a href="/articleControl">게시글 관리</a>
@@ -226,7 +226,7 @@ const MyPage = ({ logined, setLogined }) => {
                 fontSize: "1.1rem",
               }}
             >
-              받은 매너 평가
+              받은 매너평가
             </div>
             <div>
               <span className="flex items-center gap-2 mb-2">
@@ -284,7 +284,7 @@ const MyPage = ({ logined, setLogined }) => {
                 color: "gray",
               }}
             >
-              당근마켓 대표 이미지와 닉네임을 변경할 수 있습니다.
+              채소마켓 대표 이미지와 닉네임을 변경할 수 있습니다.
             </h2>
             <section
               style={{
@@ -314,7 +314,7 @@ const MyPage = ({ logined, setLogined }) => {
                     alignItems: "center",
                   }}
                 >
-                  프로필사진
+                  프로필 사진
                 </div>
                 <div
                   style={{
@@ -441,7 +441,8 @@ const MyPage = ({ logined, setLogined }) => {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                marginTop: "20px",
+                marginTop: "50px",
+                marginBottom: "50px",
                 gap: "20px",
               }}
             >
@@ -476,7 +477,7 @@ const MyPage = ({ logined, setLogined }) => {
                     padding: "5px 10px",
                   }}
                 >
-                  사진 초기화하기
+                  사진 초기화
                 </span>
               </button>
               <button

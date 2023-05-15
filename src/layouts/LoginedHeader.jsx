@@ -75,7 +75,7 @@ const LoginedHeader = ({ setLogined }) => {
           <div
             style={{
               color: "#08088A",
-              fontSize: "0.9rem",
+              fontSize: "1rem",
             }}
           >
             <a href={`/allproduct`}>중고거래하러 가기👆🏻</a>

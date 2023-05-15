@@ -26,7 +26,7 @@ const Home = ({ logined, setLogined }) => {
     const getData = async () => {
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/hotProduct`,
+          url: `http://${BACKEND_URL}/hotProduct`,
           method: "GET",
         });
         onProduct(data.data);
@@ -40,7 +40,7 @@ const Home = ({ logined, setLogined }) => {
     const getHotSearch = async () => {
       try {
         const data1 = await axios({
-          url: `http://${BACKEND_URL}:8083/getHotSearch`,
+          url: `http://${BACKEND_URL}/getHotSearch`,
           method: "GET",
         });
 
@@ -55,7 +55,7 @@ const Home = ({ logined, setLogined }) => {
   const moveProduct = async (id) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/productView/${id}`,
+        url: `http://${BACKEND_URL}/productView/${id}`,
         method: "POST",
       });
     } catch (e) {
@@ -169,7 +169,7 @@ const Home = ({ logined, setLogined }) => {
                   }}
                 >
                   <a
-                    href={`/trust`}
+                    href="#"
                     style={{
                       padding: "10px 20px",
 
@@ -504,7 +504,7 @@ const Home = ({ logined, setLogined }) => {
                   }}
                 >
                   <a
-                    href={`/trust`}
+                    href="#"
                     style={{
                       padding: "10px 20px",
 

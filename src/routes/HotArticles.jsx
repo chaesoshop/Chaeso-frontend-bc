@@ -30,7 +30,7 @@ const HotArticles = ({ logined, setLogined }) => {
     const onSubmit = async () => {
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/hotProduct`,
+          url: `http://${BACKEND_URL}/hotProduct`,
           method: "GET",
         });
         onProduct(data.data);
@@ -49,7 +49,7 @@ const HotArticles = ({ logined, setLogined }) => {
   const moveProduct = async (id) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/productView/${id}`,
+        url: `http://${BACKEND_URL}/productView/${id}`,
         method: "POST",
       });
     } catch (e) {

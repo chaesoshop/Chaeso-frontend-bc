@@ -29,7 +29,7 @@ const Alert = ({}) => {
   useEffect(() => {
     if (logined) {
       const eventSource = new EventSource(
-        `http://${BACKEND_URL}:8083/sse/${userid}`,
+        `http://${BACKEND_URL}/sse/${userid}`,
         {
           // headers: {
           //   "Content-Type": "text/event-stream",
@@ -89,7 +89,7 @@ const Alert = ({}) => {
       const getData = async () => {
         try {
           const data = await axios({
-            url: `http://${BACKEND_URL}:8083/notifications/count`,
+            url: `http://${BACKEND_URL}/notifications/count`,
             METHOD: "GET",
             params: { userid },
           });
@@ -106,7 +106,7 @@ const Alert = ({}) => {
   const readNotification = (notificationId) => {
     try {
       axios({
-        url: `http://${BACKEND_URL}:8083/notification/read/${notificationId}`,
+        url: `http://${BACKEND_URL}/notification/read/${notificationId}`,
         METHOD: "Get",
       });
     } catch (e) {
@@ -117,7 +117,7 @@ const Alert = ({}) => {
   const handleDeleteNotification = async (notificationId) => {
     try {
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/notifications/delete/${notificationId}`,
+        url: `http://${BACKEND_URL}/notifications/delete/${notificationId}`,
         method: "delete",
         data: userid,
       });
@@ -132,11 +132,11 @@ const Alert = ({}) => {
     if (window.confirm("모든 알림을 삭제하시겠습니까?")) {
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/notification/delete`,
+          url: `http://${BACKEND_URL}/notification/delete`,
           method: "Delete",
           params: { userid },
         });
-        if (data.data.msg == "알림 목록 전체삭제 성공") {
+        if (data.data.msg == "알림 목록 전체 삭제 성공") {
           window.alert("모든 알림이 삭제되었습니다.");
           window.location.reload();
         }
@@ -205,7 +205,7 @@ const Alert = ({}) => {
                   {notification.length === 0 ? (
                     <div
                       style={{
-                        border: "1px solid #ffa445",
+                        border: "1px solid #0B0B61",
                         borderRadius: "15px",
                         width: "180px",
                         textAlign: "center",
@@ -216,7 +216,7 @@ const Alert = ({}) => {
                       }}
                     >
                       <div>
-                        <span>아직 알림이 없어요!</span>
+                        <span>아직 알림이 없어요.</span>
                       </div>
                     </div>
                   ) : (
@@ -225,7 +225,7 @@ const Alert = ({}) => {
                         width: "500px",
                         maxHeight: "600px",
                         backgroundColor: "white",
-                        border: "1px #fc9d39 solid",
+                        border: "1px #0B0B61 solid",
                         borderRadius: "10px",
                         overflow: "auto",
                         marginLeft: "-440px",
@@ -238,7 +238,7 @@ const Alert = ({}) => {
                         }}
                         style={{
                           padding: "5px 10px",
-                          border: "1px #fc9d39 solid",
+                          border: "1px #0B0B61 solid",
                           marginTop: "5px",
                         }}
                       >
@@ -283,7 +283,7 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span>메세지를 보냈어요</span>
+                                    <span>메세지를 보냈어요.</span>
                                     <div
                                       style={{
                                         overflow: "hidden",
@@ -307,7 +307,7 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span> 알바를 지원하셨어요</span>
+                                    <span> 알바를 지원하셨어요.</span>
                                   </div>
                                 ) : (
                                   ""
@@ -318,9 +318,9 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span> 후기를 작성하셨어요</span>
+                                    <span> 후기를 작성하셨어요.</span>
                                     <br />
-                                    <span> 후기를 작성해주세요!</span>
+                                    <span> 후기를 작성해 주세요.</span>
                                   </div>
                                 ) : (
                                   ""
@@ -331,7 +331,7 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span>답글을 작성하셨어요</span>
+                                    <span>답글을 작성하셨어요.</span>
                                   </div>
                                 ) : (
                                   ""
@@ -390,7 +390,7 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span>&nbsp;메세지를&nbsp;보냈어요</span>
+                                    <span>&nbsp;메세지를&nbsp;보냈어요.</span>
                                     <div
                                       style={{
                                         overflow: "hidden",
@@ -414,7 +414,7 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span> 알바를 지원하셨어요</span>
+                                    <span> 알바를 지원하셨어요.</span>
                                   </div>
                                 ) : (
                                   ""
@@ -425,9 +425,9 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span> 후기를 작성하셨어요</span>
+                                    <span> 후기를 작성하셨어요.</span>
                                     <br />
-                                    <span> 후기를 작성해주세요!</span>
+                                    <span> 후기를 작성해 주세요.</span>
                                   </div>
                                 ) : (
                                   ""
@@ -438,7 +438,7 @@ const Alert = ({}) => {
                                       display: "inline",
                                     }}
                                   >
-                                    <span> 답글을 작성하셨어요</span>
+                                    <span> 답글을 작성하셨어요.</span>
                                   </div>
                                 ) : (
                                   ""

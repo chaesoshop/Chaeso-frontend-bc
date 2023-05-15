@@ -104,7 +104,7 @@ const ChangePassword = ({ logined, setLogined }) => {
     };
     try {
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/changePw`,
+        url: `http://${BACKEND_URL}/changePw`,
         method: "post",
         data: userDto,
       });
@@ -152,10 +152,10 @@ const ChangePassword = ({ logined, setLogined }) => {
               </li>
               <li
                 style={{
-                  color: "#ffa445",
+                  color: "#08088A",
                 }}
               >
-                <a href="/security">보안설정</a>
+                <a href="/security">보안 설정</a>
               </li>
               <li>
                 <a href="/articleControl">게시글 관리</a>
@@ -171,7 +171,7 @@ const ChangePassword = ({ logined, setLogined }) => {
             width: "500px",
             height: "600px",
             margin: "0 auto",
-            border: "1px #ffa445 solid",
+            border: "1px #0B0B61 solid",
             marginTop: "20px",
           }}
         >
@@ -185,22 +185,23 @@ const ChangePassword = ({ logined, setLogined }) => {
               style={{
                 fontSize: "1.4rem",
                 fontWeight: "bolder",
+                marginBottom: "10px",
               }}
             >
               비밀번호 변경
             </h1>
             <ul>
-              ·&nbsp;
+              &nbsp;
               <li
                 style={{
                   color: "red",
                   display: "inline",
                 }}
               >
-                다른 아이디/사이트에서 사용한 적 없는 비밀번호
+                다른 아이디/사이트에서 사용한 적 없는 비밀번호,
               </li>
               <br />
-              ·&nbsp;
+              &nbsp;
               <li
                 style={{
                   color: "red",
@@ -211,13 +212,24 @@ const ChangePassword = ({ logined, setLogined }) => {
               </li>
               <span>가 안전합니다.</span>
             </ul>
+            <h5
+                style={{
+                  textAlign: "start",
+                  paddingLeft: "10px",
+                  paddingBottom: "5px",
+                  fontWeight: "bolder",
+                  paddingTop: "15px",
+                  width: "190px",
+                }}
+              >
+                현재 비밀번호
+              </h5>
             <div
               style={{
-                paddingTop: "50px",
                 paddingBottom: "20px",
               }}
             >
-              <div>
+              <div>               
                 <input
                   type="password"
                   style={{
@@ -237,7 +249,7 @@ const ChangePassword = ({ logined, setLogined }) => {
                       position: "absolute",
                       width: "290px",
                       height: "30px",
-                      top: "37.5%",
+                      top: "41.5%",
                       left: "50%",
                     }}
                   >
@@ -262,7 +274,7 @@ const ChangePassword = ({ logined, setLogined }) => {
                       position: "absolute",
                       width: "290px",
                       height: "30px",
-                      top: "37.5%",
+                      top: "41.5%",
                       left: "50%",
                     }}
                   >
@@ -278,14 +290,14 @@ const ChangePassword = ({ logined, setLogined }) => {
                         paddingLeft: "5px",
                       }}
                     >
-                      비밀번호 양식을 다시 확인해주세요
+                      비밀번호 양식을 다시 확인해 주세요
                     </span>
                   </div>
                 ))}
               <h5
                 style={{
                   textAlign: "start",
-                  paddingLeft: "50px",
+                  paddingLeft: "10px",
                   paddingBottom: "5px",
                   fontWeight: "bolder",
                   paddingTop: "15px",
@@ -308,7 +320,7 @@ const ChangePassword = ({ logined, setLogined }) => {
               <h5
                 style={{
                   textAlign: "start",
-                  paddingLeft: "50px",
+                  paddingLeft: "10px",
                   paddingBottom: "5px",
                   fontWeight: "bolder",
                   paddingTop: "15px",
@@ -324,7 +336,7 @@ const ChangePassword = ({ logined, setLogined }) => {
                       position: "absolute",
                       width: "290px",
                       height: "30px",
-                      top: "46.5%",
+                      top: "52.5%",
                       left: "50%",
                     }}
                   >
@@ -349,7 +361,7 @@ const ChangePassword = ({ logined, setLogined }) => {
                       position: "absolute",
                       width: "290px",
                       height: "30px",
-                      top: "46.5%",
+                      top: "52.5%",
                       left: "50%",
                     }}
                   >
@@ -365,7 +377,7 @@ const ChangePassword = ({ logined, setLogined }) => {
                         paddingLeft: "5px",
                       }}
                     >
-                      비밀번호가 일치하지 않습니다.
+                      비밀번호가 일치하지 않습니다
                     </span>
                   </div>
                 ))}
@@ -389,7 +401,7 @@ const ChangePassword = ({ logined, setLogined }) => {
               <button
                 style={{
                   margin: "50px auto",
-                  backgroundColor: "#ffa445",
+                  backgroundColor: "#0B0B61",
                   color: "white",
                   transform: "translateX(-7%)",
                   padding: "20px 40px",

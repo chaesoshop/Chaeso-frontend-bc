@@ -74,7 +74,7 @@ const ArticleControl = ({ logined, setLogined }) => {
   const onChoiceRBuyer = async () => {
     setChoiceRBuyer(!choiceRBuyer);
     const data = await axios({
-      url: `http://${BACKEND_URL}:8083/getRoomByRealtyId/${rnum}`,
+      url: `http://${BACKEND_URL}/getRoomByRealtyId/${rnum}`,
       method: "get",
     });
     setRChatList(data.data);
@@ -86,7 +86,7 @@ const ArticleControl = ({ logined, setLogined }) => {
   const moveRealty = async (id) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/realtyCheck/${id}`,
+        url: `http://${BACKEND_URL}/realtyCheck/${id}`,
         method: "POST",
       });
     } catch (e) {
@@ -128,7 +128,7 @@ const ArticleControl = ({ logined, setLogined }) => {
         return;
       }
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/realtyReview`,
+        url: `http://${BACKEND_URL}/realtyReview`,
         method: "POST",
         data: {
           realtyId: articleid,
@@ -200,7 +200,7 @@ const ArticleControl = ({ logined, setLogined }) => {
   const onChoicePBuyer = async () => {
     setChoicePBuyer(!choicePBuyer);
     const data = await axios({
-      url: `http://${BACKEND_URL}:8083/getRoomByProductId/${pnum}`,
+      url: `http://${BACKEND_URL}/getRoomByProductId/${pnum}`,
       method: "get",
     });
     setPChatList(data.data);
@@ -216,7 +216,7 @@ const ArticleControl = ({ logined, setLogined }) => {
   const moveProduct = async (id) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/productView/${id}`,
+        url: `http://${BACKEND_URL}/productView/${id}`,
         method: "POST",
       });
     } catch (e) {
@@ -256,7 +256,7 @@ const ArticleControl = ({ logined, setLogined }) => {
       };
 
       axios({
-        url: `http://${BACKEND_URL}:8083/addReviewNotification`,
+        url: `http://${BACKEND_URL}/addReviewNotification`,
         method: "POST",
         data: notificationRequestDto,
       });
@@ -282,7 +282,7 @@ const ArticleControl = ({ logined, setLogined }) => {
         return;
       }
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/productReview`,
+        url: `http://${BACKEND_URL}/productReview`,
         method: "POST",
         data: {
           productId: articleid,
@@ -344,7 +344,7 @@ const ArticleControl = ({ logined, setLogined }) => {
   const moveJobs = async (id) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/jobsCheck/${id}`,
+        url: `http://${BACKEND_URL}/jobsCheck/${id}`,
         method: "POST",
       });
     } catch (e) {
@@ -364,7 +364,7 @@ const ArticleControl = ({ logined, setLogined }) => {
       const userid = sessionStorage.getItem("userid");
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/getRealtys/${userid}`,
+          url: `http://${BACKEND_URL}/getRealtys/${userid}`,
           method: "post",
         });
         onRealty(data.data);
@@ -374,7 +374,7 @@ const ArticleControl = ({ logined, setLogined }) => {
       }
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/getProducts/${userid}`,
+          url: `http://${BACKEND_URL}/getProducts/${userid}`,
           method: "post",
         });
 
@@ -386,7 +386,7 @@ const ArticleControl = ({ logined, setLogined }) => {
       }
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/getJobs/${userid}`,
+          url: `http://${BACKEND_URL}/getJobs/${userid}`,
           method: "post",
         });
         onJobs(data.data);
@@ -424,7 +424,7 @@ const ArticleControl = ({ logined, setLogined }) => {
               <a href="/mypage">내 프로필</a>
             </li>
             <li>
-              <a href="/security">보안설정</a>
+              <a href="/security">보안 설정</a>
             </li>
             <li
               style={{
@@ -660,7 +660,7 @@ const ArticleControl = ({ logined, setLogined }) => {
                                   marginBottom: "-5px",
                                 }}
                               >
-                                구매자를 선택해주세요!
+                                구매자를 선택해 주세요!
                               </button>
                             </div>
                           ) : (
@@ -693,7 +693,7 @@ const ArticleControl = ({ logined, setLogined }) => {
                                 }}
                               >
                                 {pChatList.length == 0 ? (
-                                  <div style={{}}>"채팅 내역이 없습니다."</div>
+                                  <div style={{}}>해당 상품채팅 내역이 없습니다.</div>
                                 ) : (
                                   ""
                                 )}
@@ -877,7 +877,7 @@ const ArticleControl = ({ logined, setLogined }) => {
                                 <div
                                   className="flex flex-col items-center "
                                   style={{
-                                    color: "#fc9d39",
+                                    color: "#0B0B61",
                                   }}
                                 >
                                   <ImSad2
@@ -907,7 +907,7 @@ const ArticleControl = ({ logined, setLogined }) => {
                                 <div
                                   className="flex flex-col items-center "
                                   style={{
-                                    color: "#fc9d39",
+                                    color: "#0B0B61",
                                   }}
                                 >
                                   <ImSmile2
@@ -938,7 +938,7 @@ const ArticleControl = ({ logined, setLogined }) => {
                                 <div
                                   className="flex flex-col items-center gap-1"
                                   style={{
-                                    color: "#fc9d39",
+                                    color: "#0B0B61",
                                   }}
                                 >
                                   <ImHappy2
@@ -964,7 +964,7 @@ const ArticleControl = ({ logined, setLogined }) => {
                           <div
                             className=" flex justify-center m-2"
                             style={{
-                              backgroundColor: "#fc9d39",
+                              backgroundColor: "#0B0B61",
                               color: "white",
                               borderRadius: "5px",
                             }}

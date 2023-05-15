@@ -35,7 +35,7 @@ const Security = ({ logined, setLogined }) => {
       let abcd = sessionStorage.getItem("userid");
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/getUser/${abcd}`,
+          url: `http://${BACKEND_URL}/getUser/${abcd}`,
           method: "GET",
         });
         setUser(data.data);
@@ -49,7 +49,7 @@ const Security = ({ logined, setLogined }) => {
   const pwCheck = async (password) => {
     const userDto = { userid: sessionStorage.getItem("userid"), password };
     const data = await axios({
-      url: `http://${BACKEND_URL}:8083/checkPw`,
+      url: `http://${BACKEND_URL}/checkPw`,
       method: "POST",
       data: userDto,
     });
@@ -92,7 +92,7 @@ const Security = ({ logined, setLogined }) => {
                 color: "#08088A",
               }}
             >
-              <a href="/security">보안설정</a>
+              <a href="/security">보안 설정</a>
             </li>
             <li>
               <a href="/articleControl">게시글 관리</a>
@@ -128,7 +128,7 @@ const Security = ({ logined, setLogined }) => {
               style={{
                 width: "250px",
                 height: "50px",
-                border: "1px #A9A9F5 solid",
+                border: "1px #0B0B61 solid",
                 borderRadius: "15px",
               }}
               onKeyUp={(e) => {
@@ -144,7 +144,7 @@ const Security = ({ logined, setLogined }) => {
               style={{
                 width: "70px",
                 height: "40px",
-                border: "1px #A9A9F5 solid",
+                border: "1px #0B0B61 solid",
                 borderRadius: "10px",
                 marginLeft: "15px",
               }}
@@ -166,7 +166,7 @@ const Security = ({ logined, setLogined }) => {
           <div
             style={{
               width: "750px",
-              border: "1px #fc9d39 solid",
+              border: "1px #0B0B61 solid",
               borderRadius: "20px",
               margin: "20px auto",
               height: "100px",
@@ -203,50 +203,6 @@ const Security = ({ logined, setLogined }) => {
                 수정
               </button>
             </div>
-          </div>
-          <div
-            style={{
-              width: "750px",
-              border: "1px #fc9d39 solid",
-              borderRadius: "20px",
-              margin: "20px auto",
-              height: "100px",
-            }}
-          >
-            <span
-              style={{
-                color: "gray",
-                marginLeft: "20px",
-              }}
-            >
-              다른보안설정
-            </span>
-            <div
-              style={{
-                margin: "5px auto",
-                display: "flex",
-                justifyContent: "space-between",
-                width: "710px",
-              }}
-            ></div>
-          </div>
-          <div
-            style={{
-              width: "750px",
-              border: "1px #fc9d39 solid",
-              borderRadius: "20px",
-              margin: "20px auto",
-              height: "100px",
-            }}
-          >
-            <span
-              style={{
-                color: "gray",
-                marginLeft: "20px",
-              }}
-            >
-              또다른보안설정
-            </span>
           </div>
         </div>
       )}

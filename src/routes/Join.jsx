@@ -36,7 +36,7 @@ const Join = () => {
   const IdCheck = async (idValue) => {
     try {
       const data = await axios.get(
-        `http://${BACKEND_URL}:8083/checkId/${idValue}`
+        `http://${BACKEND_URL}/checkId/${idValue}`
       );
       setIdCheck(data.data);
     } catch (e) {
@@ -184,7 +184,7 @@ const Join = () => {
     try {
       let birth = JSON.stringify(birthValue);
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/createUser`,
+        url: `http://${BACKEND_URL}/createUser`,
         method: "POST",
         data: {
           userid: idValue,
@@ -865,7 +865,7 @@ const Join = () => {
               style={{
                 width: "300px",
                 height: "160px",
-                border: "1px #fcb264 solid",
+                border: "1px #0B0B61 solid",
                 position: "absolute",
                 top: "20%",
                 left: "20%",
@@ -884,7 +884,7 @@ const Join = () => {
               </span>
               <button
                 style={{
-                  backgroundColor: "#fcb264",
+                  backgroundColor: "#0B0B61",
                   color: "white",
                   width: "250px",
                   height: "30px",

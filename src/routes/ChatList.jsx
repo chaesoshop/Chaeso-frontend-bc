@@ -22,7 +22,7 @@ const ChatList = ({ logined, setLogined }) => {
     const getData = async () => {
       try {
         const data = await axios({
-          url: `http://${BACKEND_URL}:8083/getChatList`,
+          url: `http://${BACKEND_URL}/getChatList`,
           method: "get",
           params: { userid },
         });
@@ -62,7 +62,7 @@ const ChatList = ({ logined, setLogined }) => {
               <a href="/mypage">내 프로필</a>{" "}
             </li>
             <li>
-              <a href="/security">보안설정</a>
+              <a href="/security">보안 설정</a>
             </li>
             <li>
               <a href="/articleControl">게시글 관리</a>

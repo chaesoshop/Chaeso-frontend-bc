@@ -62,7 +62,7 @@ function App() {
   const onLike = async (articleid, userid) => {
     try {
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/likeProduct/${articleid}`,
+        url: `http://${BACKEND_URL}/likeProduct/${articleid}`,
         method: "GET",
         params: {
           productId: articleid,
@@ -78,7 +78,7 @@ function App() {
   const onRemove = async (id) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/productDelete/${id}`,
+        url: `http://${BACKEND_URL}/productDelete/${id}`,
         method: "POST",
       });
     } catch (e) {
@@ -89,7 +89,7 @@ function App() {
   const onRemoveReply = async (replyId) => {
     try {
       await axios({
-        url: `http://${BACKEND_URL}:8083/replyDelete/${replyId}`,
+        url: `http://${BACKEND_URL}/replyDelete/${replyId}`,
         method: "POST",
       });
     } catch (e) {

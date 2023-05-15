@@ -17,8 +17,7 @@ const ProductWrite = ({ logined, setLogined }) => {
   useEffect(() => {
     if (!logined) {
       window.alert("로그인 후 사용할 수 있는 기능입니다.");
-      // moveBack();
-      // 알런트 창 띄우고 확인 누르면 돌아가는 기능. 코드 짤 때만 잠시 꺼둠.
+      moveBack();
     }
   }, []);
   const [category, setCategoryValue] = useState("");
@@ -110,7 +109,7 @@ const ProductWrite = ({ logined, setLogined }) => {
   ) => {
     try {
       const data = await axios({
-        url: `http://${BACKEND_URL}:8083/createProduct`,
+        url: `http://${BACKEND_URL}/createProduct`,
         method: "POST",
         data: {
           productCategory: category,
@@ -158,7 +157,7 @@ const ProductWrite = ({ logined, setLogined }) => {
         headers: {
           "Content-Type": `application/json`,
         },
-        url: `http://${BACKEND_URL}:8083/createProductImages`,
+        url: `http://${BACKEND_URL}/createProductImages`,
         method: "POST",
         data: formData,
       });
@@ -408,7 +407,7 @@ const ProductWrite = ({ logined, setLogined }) => {
                 fontWeight: "bolder",
                 color: "white",
                 fontSize: "1.1rem",
-                backgroundColor: "#CED8F6",
+                backgroundColor: "#0B0B61",
                 margin: "15px auto",
                 width: "750px",
               }}
