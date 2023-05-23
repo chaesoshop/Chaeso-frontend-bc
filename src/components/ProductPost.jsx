@@ -760,10 +760,46 @@ const ProductPost = ({
                 style={{
                   width: "300px",
                   color: "white",
-                  backgroundColor: "#0B0B61",
+                  backgroundColor: "#DF0174",
                 }}
               >
                 채팅하기
+              </button>
+              <button
+                /* onClick={() => {
+                  const myName = sessionStorage.getItem("userid");
+
+                  const yourName = articleWriter.userid;
+
+                  sessionStorage.setItem("yourName", articleWriter.userid);
+                  moveChat(myName, yourName);
+                }} */
+                className="rounded p-2 font-bold flex justify-center"
+                style={{
+                  width: "300px",
+                  color: "white",
+                  backgroundColor: "#0B0B61",
+                }}
+              >
+                판매하기
+              </button>
+              <button
+                /* onClick={() => {
+                  const myName = sessionStorage.getItem("userid");
+
+                  const yourName = articleWriter.userid;
+
+                  sessionStorage.setItem("yourName", articleWriter.userid);
+                  moveChat(myName, yourName);
+                }} */
+                className="rounded p-2 font-bold flex justify-center"
+                style={{
+                  width: "300px",
+                  color: "white",
+                  backgroundColor: "#0B0B61",
+                }}
+              >
+                구매하기
               </button>
             </div>
           </section>
