@@ -15,6 +15,7 @@
     "axios-hooks": "^4.0.0",
     "bootstrap": "^5.2.2",
     "daisyui": "^2.22.0",
+    "ethers": "^6.4.0",
     "event-source-polyfill": "^1.0.31",
     "gulp-sass": "5.1.0",
     "react": "^18.2.0",
@@ -37,6 +38,7 @@
     "stompjs": "^2.3.3",
     "swiper": "^8.4.4",
     "web-vitals": "^2.1.4",
+    "web3": "^1.10.0",
     "ws": "^8.11.0"
   },
   "scripts": {

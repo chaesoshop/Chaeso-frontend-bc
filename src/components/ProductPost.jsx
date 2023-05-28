@@ -19,6 +19,9 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import Temp from "../routes/Temp";
 import uuid from "react-uuid";
 import { BACKEND_URL } from "../config/config";
+import Web3 from 'web3';
+
+
 const ProductPost = ({
   logined,
   setLogined,
@@ -37,12 +40,302 @@ const ProductPost = ({
   const { num } = useParams();
   const [userid, setUserid] = useState(sessionStorage.getItem("userid"));
   const [articleWriter, setArticleWriter] = useState("");
+  const [web3, setWeb3] = useState(null);
+  const [networkId, setNetworkId] = useState(null);
+  const [account, setAccount] = useState('');
+  const [count, setCount] = useState(1);
 
   const navigate = useNavigate();
   const moveBack = () => {
     navigate(-1);
   };
 
+
+const increment = () => {
+  setCount(prevCount => prevCount + 1);
+};
+
+// 메타마스크 연결
+const ConnectMetamask = () => {
+  useEffect(() => {
+    const initWeb3 = async () => {
+      if (window.ethereum) {
+        const web3Instance = new Web3(window.ethereum);
+        setWeb3(web3Instance);
+        try {
+          await window.ethereum.enable();
+          const accounts = await web3Instance.eth.getAccounts();
+          setAccount(accounts[0]);
+        } catch (error) {
+          console.error('Metamask Connection error:', error);
+        }
+      } else {
+        console.error('Could not Find Metamask');
+      }
+    };
+
+    initWeb3();
+  }, []);
+};
+
+// 계정 조회
+const getAccountAddress = async () => {
+  if (web3) {
+    try {
+      const accounts = await web3.eth.getAccounts();
+      console.log('Account:', accounts[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+};
+
+// 메타마스크 네트워크 변경 To Sepolia
+const switchNetwork = async () => {
+  const chainId = 11155111
+  if (window.ethereum.networkVersion !== chainId) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: web3.utils.toHex(chainId) }]
+          });
+        } catch (err) {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [
+                {
+                  chainName: 'Sepolia Testnet',
+                  chainId: web3.utils.toHex(chainId),
+                  nativeCurrency: { name: 'ETH', decimals: 18, symbol: 'ETH' },
+                  rpcUrls: ['https://sepolia.etherscan.io/']
+                }
+              ]
+            });
+        }
+      }
+};
+
+const ABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "tokenAddress",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "buyer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "itemId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "ItemPurchased",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "seller",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "itemId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "ItemSold",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "ItemId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "buyItem",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "getBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "itemOwners",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "itemId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "sellItem",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "token",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
+
+// ChaseoMarket Exchnage Contract 주소
+const Contractaddress = "0xb7d61E3AE711B320c0d8E9B142106a182b079364"
+
+// 아이템 보유자
+const ItemOwners = async (id) => {
+  if (web3) {
+    const contract = new web3.eth.Contract(ABI, Contractaddress)  
+    const data = await contract.methods.itemOwners(id).call()
+    console.log(data);
+  }
+};
+
+// 현재 아이템 ID
+const Itemid = async () => {
+  if (web3) {
+    const contract = new web3.eth.Contract(ABI, Contractaddress)  
+    const data = await contract.methods.ItemId().call()
+    console.log(data);
+  }
+};
+
+// 토큰 잔액 조회
+const Balance = async (account) => {
+  if (web3) {
+    const contract = new web3.eth.Contract(ABI, Contractaddress)  
+    const data = await contract.methods.Balance(account).call()
+    console.log(data);
+  }
+};
+
+// 상품 판매
+const SellProduct = async () => {
+  if (web3) {
+    const contract = new web3.eth.Contract(ABI, Contractaddress)  
+    increment()
+    await contract.methods.sellItem(count, 100).send({
+      from: account
+    }).on('TransactionHash', (hash) => {
+      console.log(hash);
+    })
+    
+  }
+};
+
+// 상품 구매
+const BuyProduct = async () => {
+  if (web3) {
+    const contract = new web3.eth.Contract(ABI, Contractaddress)  
+    await contract.methods.buyItem(1).send({
+      from: account
+    }).on('transactionHash', (hash) => {
+      console.log(hash);
+    })
+  }
+};
+
+
+
+ConnectMetamask()
+///////////////////////////////////// blockchain ///////////////////////////////////////////////////
+  
+  
   const moveChat = async (myName, yourName) => {
     if (myName === yourName) {
       alert("자기 자신에게는 메세지를 보낼 수 없습니다.");
@@ -766,14 +1059,7 @@ const ProductPost = ({
                 채팅하기
               </button>
               <button
-                /* onClick={() => {
-                  const myName = sessionStorage.getItem("userid");
-
-                  const yourName = articleWriter.userid;
-
-                  sessionStorage.setItem("yourName", articleWriter.userid);
-                  moveChat(myName, yourName);
-                }} */
+                onClick={() => {SellProduct()}}
                 className="rounded p-2 font-bold flex justify-center"
                 style={{
                   width: "300px",
@@ -784,14 +1070,7 @@ const ProductPost = ({
                 판매하기
               </button>
               <button
-                /* onClick={() => {
-                  const myName = sessionStorage.getItem("userid");
-
-                  const yourName = articleWriter.userid;
-
-                  sessionStorage.setItem("yourName", articleWriter.userid);
-                  moveChat(myName, yourName);
-                }} */
+                onClick={() => {BuyProduct()}}
                 className="rounded p-2 font-bold flex justify-center"
                 style={{
                   width: "300px",
@@ -1338,6 +1617,10 @@ const ProductPost = ({
       </div>
     );
   }
+
+
+
+
 };
 
 export default ProductPost;
